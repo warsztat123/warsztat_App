@@ -34,7 +34,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
             this.txtMiasto = new System.Windows.Forms.TextBox();
             this.txtNumer = new System.Windows.Forms.TextBox();
             this.txtUlica = new System.Windows.Forms.TextBox();
@@ -111,18 +110,6 @@
             this.label1.Size = new System.Drawing.Size(48, 25);
             this.label1.TabIndex = 39;
             this.label1.Text = "Imie";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
-            // 
-            // button4
-            // 
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button4.Location = new System.Drawing.Point(12, 486);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(351, 59);
-            this.button4.TabIndex = 38;
-            this.button4.Text = "Wyświetl";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // txtMiasto
             // 
@@ -219,7 +206,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(805, 725);
             this.dataGridView1.TabIndex = 28;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
-            this.dataGridView1.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_RowHeaderMouseClick);
             // 
             // label7
             // 
@@ -272,7 +258,6 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.button4);
             this.Controls.Add(this.txtMiasto);
             this.Controls.Add(this.txtNumer);
             this.Controls.Add(this.txtUlica);
@@ -301,7 +286,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button4;
         private System.Windows.Forms.TextBox txtMiasto;
         private System.Windows.Forms.TextBox txtNumer;
         private System.Windows.Forms.TextBox txtUlica;

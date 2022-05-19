@@ -19,13 +19,35 @@ namespace WarsztatApp
         SqlConnection sqlConnection = new SqlConnection(ConnectionString);
         SqlCommand sqlCommand;
         SqlDataAdapter sqlDAdapter = new SqlDataAdapter();
-        int index;
+        private int index;
 
+        
 
         public FormKlienci()
         {
             InitializeComponent();
+            wyswietlDane();
+            button1.Enabled = false;
+            
         }
+
+        private void wyswietlDane()
+        {
+            try
+            {
+                sqlConnection.Open();
+                wyswietlDaneKlientow();
+            }
+            catch
+            {
+                MessageBox.Show("Błąd", "Bląd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                sqlConnection.Close();
+            }
+        }
+
 
         private void button3_Click(object sender, EventArgs e)//dodawanie
         {
@@ -73,6 +95,7 @@ namespace WarsztatApp
             finally
             {
                 sqlConnection.Close();
+                button1.Enabled = false;
                 txtImie.Text = "";
                 txtNazwisko.Text = "";
                 txtTelefon.Text = "";
@@ -86,30 +109,7 @@ namespace WarsztatApp
 
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button4_Click(object sender, EventArgs e)//wyświetlanie
-        {
-            try
-            {
-                sqlConnection.Open();
-                wyswietlDaneKlientow();
-            }
-            catch
-            {
-                MessageBox.Show("Błąd", "Bląd", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                sqlConnection.Close();
-            }
-           
-            
-            
-        }
+        
 
 
         private void wyswietlDaneKlientow()
@@ -163,9 +163,18 @@ namespace WarsztatApp
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            index = e.RowIndex;
-            DataGridViewRow row = dataGridView1.Rows[index];
-           
+            // index = e.RowIndex;
+            //DataGridViewRow row = dataGridView1.Rows[index];
+            button1.Enabled = true;
+            txtImie.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
+            txtNazwisko.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
+            txtTelefon.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
+            txtUlica.Text = dataGridView1.CurrentRow.Cells[4].Value.ToString();
+            txtNumer.Text = dataGridView1.CurrentRow.Cells[5].Value.ToString();
+            txtMiasto.Text = dataGridView1.CurrentRow.Cells[6].Value.ToString();
+            txtWojewodztwo.Text = dataGridView1.CurrentRow.Cells[7].Value.ToString();
+            txtKodPocztowy.Text = dataGridView1.CurrentRow.Cells[8].Value.ToString();
+
         }
 
         private void button2_Click(object sender, EventArgs e)//edycja
@@ -212,6 +221,7 @@ namespace WarsztatApp
             finally
             {
                 sqlConnection.Close();
+                button1.Enabled = false;
                 txtImie.Text = "";
                 txtNazwisko.Text = "";
                 txtTelefon.Text = "";
@@ -224,17 +234,7 @@ namespace WarsztatApp
 
         }
 
-        private void dataGridView1_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            txtImie.Text=dataGridView1.CurrentRow.Cells[1].Value.ToString();
-            txtNazwisko.Text=dataGridView1.CurrentRow.Cells[2].Value.ToString();
-            txtTelefon.Text=dataGridView1.CurrentRow.Cells[3].Value.ToString();
-            txtUlica.Text=dataGridView1.CurrentRow.Cells[4].Value.ToString();
-            txtNumer.Text=dataGridView1.CurrentRow.Cells[5].Value.ToString();
-            txtMiasto.Text=dataGridView1.CurrentRow.Cells[6].Value.ToString();
-            txtWojewodztwo.Text=dataGridView1.CurrentRow.Cells[7].Value.ToString();
-            txtKodPocztowy.Text=dataGridView1.CurrentRow.Cells[8].Value.ToString();
-        }
+        
     }
 }
 
