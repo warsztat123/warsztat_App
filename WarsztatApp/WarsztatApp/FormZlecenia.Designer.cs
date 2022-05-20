@@ -29,16 +29,16 @@
         private void InitializeComponent()
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonDodaj = new System.Windows.Forms.Button();
+            this.buttonModyf = new System.Windows.Forms.Button();
+            this.buttonUsun = new System.Windows.Forms.Button();
             this.textBoxImie = new System.Windows.Forms.TextBox();
             this.textBoxNazw = new System.Windows.Forms.TextBox();
             this.textBoxTel = new System.Windows.Forms.TextBox();
             this.textBoxUlica = new System.Windows.Forms.TextBox();
             this.textBoxNrUlicy = new System.Windows.Forms.TextBox();
             this.textBoxMiasto = new System.Windows.Forms.TextBox();
-            this.button4 = new System.Windows.Forms.Button();
+            this.buttonWyswietl = new System.Windows.Forms.Button();
             this.labelImie = new System.Windows.Forms.Label();
             this.labelNazw = new System.Windows.Forms.Label();
             this.labelTel = new System.Windows.Forms.Label();
@@ -47,8 +47,6 @@
             this.labelMiasto = new System.Windows.Forms.Label();
             this.labelWojew = new System.Windows.Forms.Label();
             this.textBoxWojew = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.labelMarka = new System.Windows.Forms.Label();
             this.textBoxMarka = new System.Windows.Forms.TextBox();
             this.labelModel = new System.Windows.Forms.Label();
@@ -62,10 +60,19 @@
             this.labelStatus = new System.Windows.Forms.Label();
             this.comboBoxStatus = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.textBoxKodP = new System.Windows.Forms.TextBox();
+            this.labelKodPocz = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.dateTimePickerOd = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePickerDo = new System.Windows.Forms.DateTimePicker();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.labelDoDaty = new System.Windows.Forms.Label();
+            this.labelOdDaty = new System.Windows.Forms.Label();
+            this.buttonDodajCzesci = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -73,43 +80,49 @@
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(383, 12);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(805, 726);
+            this.dataGridView1.Size = new System.Drawing.Size(805, 760);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
-            // button3
+            // buttonDodaj
             // 
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button3.Location = new System.Drawing.Point(12, 698);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(351, 39);
-            this.button3.TabIndex = 1;
-            this.button3.Text = "Dodaj";
-            this.button3.UseVisualStyleBackColor = true;
+            this.buttonDodaj.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonDodaj.Location = new System.Drawing.Point(27, 594);
+            this.buttonDodaj.Name = "buttonDodaj";
+            this.buttonDodaj.Size = new System.Drawing.Size(143, 29);
+            this.buttonDodaj.TabIndex = 1;
+            this.buttonDodaj.Text = "Dodaj";
+            this.buttonDodaj.UseVisualStyleBackColor = true;
+            this.buttonDodaj.Click += new System.EventHandler(this.buttonDodaj_Click);
             // 
-            // button2
+            // buttonModyf
             // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button2.Location = new System.Drawing.Point(12, 653);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(351, 39);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Modyfikuj";
-            this.button2.UseVisualStyleBackColor = true;
+            this.buttonModyf.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonModyf.Location = new System.Drawing.Point(27, 629);
+            this.buttonModyf.Name = "buttonModyf";
+            this.buttonModyf.Size = new System.Drawing.Size(143, 29);
+            this.buttonModyf.TabIndex = 2;
+            this.buttonModyf.Text = "Modyfikuj";
+            this.buttonModyf.UseVisualStyleBackColor = true;
+            this.buttonModyf.Click += new System.EventHandler(this.buttonModyf_Click);
             // 
-            // button1
+            // buttonUsun
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button1.Location = new System.Drawing.Point(12, 608);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(351, 39);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Usuń";
-            this.button1.UseVisualStyleBackColor = true;
+            this.buttonUsun.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonUsun.Location = new System.Drawing.Point(220, 594);
+            this.buttonUsun.Name = "buttonUsun";
+            this.buttonUsun.Size = new System.Drawing.Size(143, 29);
+            this.buttonUsun.TabIndex = 3;
+            this.buttonUsun.Text = "Usuń";
+            this.buttonUsun.UseVisualStyleBackColor = true;
+            this.buttonUsun.Click += new System.EventHandler(this.buttonUsun_Click);
             // 
             // textBoxImie
             // 
@@ -159,15 +172,16 @@
             this.textBoxMiasto.Size = new System.Drawing.Size(212, 27);
             this.textBoxMiasto.TabIndex = 9;
             // 
-            // button4
+            // buttonWyswietl
             // 
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button4.Location = new System.Drawing.Point(12, 563);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(351, 39);
-            this.button4.TabIndex = 21;
-            this.button4.Text = "Wyświetl";
-            this.button4.UseVisualStyleBackColor = true;
+            this.buttonWyswietl.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonWyswietl.Location = new System.Drawing.Point(22, 65);
+            this.buttonWyswietl.Name = "buttonWyswietl";
+            this.buttonWyswietl.Size = new System.Drawing.Size(298, 29);
+            this.buttonWyswietl.TabIndex = 21;
+            this.buttonWyswietl.Text = "Wyświetl";
+            this.buttonWyswietl.UseVisualStyleBackColor = true;
+            this.buttonWyswietl.Click += new System.EventHandler(this.button4_Click);
             // 
             // labelImie
             // 
@@ -246,24 +260,6 @@
             this.textBoxWojew.Name = "textBoxWojew";
             this.textBoxWojew.Size = new System.Drawing.Size(212, 27);
             this.textBoxWojew.TabIndex = 28;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label8.Location = new System.Drawing.Point(140, 276);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(137, 25);
-            this.label8.TabIndex = 31;
-            this.label8.Text = "Kod Pocztowy";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.textBox1.Location = new System.Drawing.Point(293, 273);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(212, 27);
-            this.textBox1.TabIndex = 30;
             // 
             // labelMarka
             // 
@@ -359,7 +355,7 @@
             // 
             this.labelStatus.AutoSize = true;
             this.labelStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelStatus.Location = new System.Drawing.Point(23, 516);
+            this.labelStatus.Location = new System.Drawing.Point(23, 552);
             this.labelStatus.Name = "labelStatus";
             this.labelStatus.Size = new System.Drawing.Size(57, 20);
             this.labelStatus.TabIndex = 43;
@@ -369,13 +365,15 @@
             // 
             this.comboBoxStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.comboBoxStatus.FormattingEnabled = true;
-            this.comboBoxStatus.Location = new System.Drawing.Point(86, 513);
+            this.comboBoxStatus.Location = new System.Drawing.Point(86, 549);
             this.comboBoxStatus.Name = "comboBoxStatus";
             this.comboBoxStatus.Size = new System.Drawing.Size(277, 28);
             this.comboBoxStatus.TabIndex = 44;
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.textBoxKodP);
+            this.groupBox1.Controls.Add(this.labelKodPocz);
             this.groupBox1.Controls.Add(this.labelImie);
             this.groupBox1.Controls.Add(this.textBoxImie);
             this.groupBox1.Controls.Add(this.textBoxNazw);
@@ -389,16 +387,32 @@
             this.groupBox1.Controls.Add(this.labelNrUlicy);
             this.groupBox1.Controls.Add(this.labelMiasto);
             this.groupBox1.Controls.Add(this.textBoxWojew);
-            this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.labelWojew);
-            this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.groupBox1.Location = new System.Drawing.Point(17, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(360, 271);
+            this.groupBox1.Size = new System.Drawing.Size(360, 312);
             this.groupBox1.TabIndex = 45;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Dane Klienta";
+            // 
+            // textBoxKodP
+            // 
+            this.textBoxKodP.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.textBoxKodP.Location = new System.Drawing.Point(134, 273);
+            this.textBoxKodP.Name = "textBoxKodP";
+            this.textBoxKodP.Size = new System.Drawing.Size(212, 27);
+            this.textBoxKodP.TabIndex = 30;
+            // 
+            // labelKodPocz
+            // 
+            this.labelKodPocz.AutoSize = true;
+            this.labelKodPocz.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelKodPocz.Location = new System.Drawing.Point(6, 276);
+            this.labelKodPocz.Name = "labelKodPocz";
+            this.labelKodPocz.Size = new System.Drawing.Size(115, 20);
+            this.labelKodPocz.TabIndex = 31;
+            this.labelKodPocz.Text = "Kod Pocztowy";
             // 
             // groupBox2
             // 
@@ -413,27 +427,96 @@
             this.groupBox2.Controls.Add(this.labelKolor);
             this.groupBox2.Controls.Add(this.textBoxKolor);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.groupBox2.Location = new System.Drawing.Point(17, 298);
+            this.groupBox2.Location = new System.Drawing.Point(17, 330);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(360, 206);
             this.groupBox2.TabIndex = 46;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Dane Auta";
             // 
+            // dateTimePickerOd
+            // 
+            this.dateTimePickerOd.CustomFormat = "yyyy.MM.dd";
+            this.dateTimePickerOd.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePickerOd.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.dateTimePickerOd.Location = new System.Drawing.Point(42, 31);
+            this.dateTimePickerOd.Name = "dateTimePickerOd";
+            this.dateTimePickerOd.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.dateTimePickerOd.Size = new System.Drawing.Size(111, 22);
+            this.dateTimePickerOd.TabIndex = 47;
+            this.dateTimePickerOd.Value = new System.DateTime(2022, 5, 20, 12, 25, 33, 0);
+            // 
+            // dateTimePickerDo
+            // 
+            this.dateTimePickerDo.CustomFormat = "yyyy.MM.dd";
+            this.dateTimePickerDo.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePickerDo.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.dateTimePickerDo.Location = new System.Drawing.Point(193, 31);
+            this.dateTimePickerDo.Name = "dateTimePickerDo";
+            this.dateTimePickerDo.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.dateTimePickerDo.Size = new System.Drawing.Size(111, 22);
+            this.dateTimePickerDo.TabIndex = 48;
+            this.dateTimePickerDo.Value = new System.DateTime(2022, 5, 20, 12, 25, 39, 0);
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.labelDoDaty);
+            this.groupBox3.Controls.Add(this.labelOdDaty);
+            this.groupBox3.Controls.Add(this.buttonWyswietl);
+            this.groupBox3.Controls.Add(this.dateTimePickerDo);
+            this.groupBox3.Controls.Add(this.dateTimePickerOd);
+            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold);
+            this.groupBox3.Location = new System.Drawing.Point(17, 672);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(360, 100);
+            this.groupBox3.TabIndex = 49;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Wyszukaj wzgledem daty";
+            // 
+            // labelDoDaty
+            // 
+            this.labelDoDaty.AutoSize = true;
+            this.labelDoDaty.Location = new System.Drawing.Point(159, 36);
+            this.labelDoDaty.Name = "labelDoDaty";
+            this.labelDoDaty.Size = new System.Drawing.Size(28, 17);
+            this.labelDoDaty.TabIndex = 50;
+            this.labelDoDaty.Text = "Do";
+            // 
+            // labelOdDaty
+            // 
+            this.labelOdDaty.AutoSize = true;
+            this.labelOdDaty.Location = new System.Drawing.Point(7, 36);
+            this.labelOdDaty.Name = "labelOdDaty";
+            this.labelOdDaty.Size = new System.Drawing.Size(29, 17);
+            this.labelOdDaty.TabIndex = 49;
+            this.labelOdDaty.Text = "Od";
+            // 
+            // buttonDodajCzesci
+            // 
+            this.buttonDodajCzesci.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonDodajCzesci.Location = new System.Drawing.Point(179, 629);
+            this.buttonDodajCzesci.Name = "buttonDodajCzesci";
+            this.buttonDodajCzesci.Size = new System.Drawing.Size(184, 29);
+            this.buttonDodajCzesci.TabIndex = 50;
+            this.buttonDodajCzesci.Text = "Dodaj Części";
+            this.buttonDodajCzesci.UseVisualStyleBackColor = true;
+            this.buttonDodajCzesci.Click += new System.EventHandler(this.buttonDodajCzesci_Click);
+            // 
             // FormZlecenia
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1200, 750);
+            this.ClientSize = new System.Drawing.Size(1200, 784);
             this.ControlBox = false;
+            this.Controls.Add(this.buttonDodajCzesci);
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.comboBoxStatus);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.buttonUsun);
             this.Controls.Add(this.labelStatus);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.buttonModyf);
+            this.Controls.Add(this.buttonDodaj);
             this.Controls.Add(this.dataGridView1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormZlecenia";
@@ -445,6 +528,8 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -453,16 +538,16 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonDodaj;
+        private System.Windows.Forms.Button buttonModyf;
+        private System.Windows.Forms.Button buttonUsun;
         private System.Windows.Forms.TextBox textBoxImie;
         private System.Windows.Forms.TextBox textBoxNazw;
         private System.Windows.Forms.TextBox textBoxTel;
         private System.Windows.Forms.TextBox textBoxUlica;
         private System.Windows.Forms.TextBox textBoxNrUlicy;
         private System.Windows.Forms.TextBox textBoxMiasto;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button buttonWyswietl;
         private System.Windows.Forms.Label labelImie;
         private System.Windows.Forms.Label labelNazw;
         private System.Windows.Forms.Label labelTel;
@@ -471,8 +556,6 @@
         private System.Windows.Forms.Label labelMiasto;
         private System.Windows.Forms.Label labelWojew;
         private System.Windows.Forms.TextBox textBoxWojew;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label labelMarka;
         private System.Windows.Forms.TextBox textBoxMarka;
         private System.Windows.Forms.Label labelModel;
@@ -487,5 +570,13 @@
         private System.Windows.Forms.ComboBox comboBoxStatus;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.TextBox textBoxKodP;
+        private System.Windows.Forms.Label labelKodPocz;
+        private System.Windows.Forms.DateTimePicker dateTimePickerOd;
+        private System.Windows.Forms.DateTimePicker dateTimePickerDo;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Label labelDoDaty;
+        private System.Windows.Forms.Label labelOdDaty;
+        private System.Windows.Forms.Button buttonDodajCzesci;
     }
 }

@@ -69,7 +69,7 @@ namespace WarsztatApp
             DialogResult odp = okno_logowania.ShowDialog();
             if (odp == DialogResult.OK)
             {
-                sqlConnection.ConnectionString = "Data Source=LAPTOP-442E11CB\\SQLEXPRESS;"
+                sqlConnection.ConnectionString = "Data Source=WINDOWS-D2AGQGT\\SQLEXPRESS;"
                                                 + "Initial Catalog=Warsztat;"
                                                 + "User ID=" + okno_logowania.textBox1.Text + ";"
                                                 + "Password=" + okno_logowania.textBox2.Text + ";";
