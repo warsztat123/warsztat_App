@@ -28,6 +28,7 @@ namespace WarsztatApp
             InitializeComponent();
             pobierzListeKategorii();
             wyswietlDane();
+            button1.Enabled = false;
         }
 
         private void dodaj_Click(object sender, EventArgs e)
@@ -120,6 +121,7 @@ namespace WarsztatApp
                 sqlDReader.Close();
                 sqlConnection.Close();
             }
+            Wyszukaj();
             
         }
 
@@ -178,6 +180,83 @@ namespace WarsztatApp
                 
             }
 
+        }
+
+        private void modyfikuj_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                sqlConnection.Open();
+                int id = (int)dataGridView1.CurrentRow.Cells[0].Value;
+                string Query = "update CzescSamochodowa set Nazwa=@nazwa,Cena=@cena,Ilosc=@ilosc where CzescSamochodowa_ID=@id;";
+
+                sqlCommand = new SqlCommand
+                    (Query, sqlConnection);
+
+                sqlCommand.Parameters.Add("@nazwa", SqlDbType.NVarChar);
+                sqlCommand.Parameters.Add("@cena", SqlDbType.Decimal);
+                sqlCommand.Parameters.Add("@ilosc", SqlDbType.Int);
+                sqlCommand.Parameters.Add("@id", SqlDbType.Int);
+
+                sqlCommand.Parameters["@nazwa"].Value = txtNazwa.Text;
+                sqlCommand.Parameters["@cena"].Value = txtCena.Text;
+                sqlCommand.Parameters["@ilosc"].Value = txtIlosc.Text;
+                sqlCommand.Parameters["@id"].Value = id.ToString();
+
+
+                sqlCommand.ExecuteNonQuery();
+                wyswietlDaneKlientow();
+                MessageBox.Show("klient edytowany pomyślnie");
+            }
+            catch (SqlException)
+            {
+                MessageBox.Show("Błędne dane", "Bląd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+
+            finally
+            {
+                sqlConnection.Close();
+                button1.Enabled = false;
+                txtNazwa.Text = "";
+                txtCena.Text = "";
+                txtIlosc.Text = "";
+                
+            }
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            button1.Enabled = true;
+            txtNazwa.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
+            txtCena.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
+            txtIlosc.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
+            
+           
+        }
+
+        private void Wyszukaj()
+        {
+            try
+            {
+                sqlConnection.Open();
+                string Query = "SELECT * from CzescSamochodowa where Kategoria_ID=2;";
+                //sqlCommand.Parameters.Add("@id", SqlDbType.Int);
+                //sqlCommand.Parameters["@id"].Value = 2;
+                sqlDAdapter = new SqlDataAdapter(Query, sqlConnection);
+                DataTable dtb1 = new DataTable();
+                sqlDAdapter.Fill(dtb1);
+                dataGridView1.DataSource = dtb1;
+            }
+            catch
+            {
+                MessageBox.Show("Błąd", "Bląd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                sqlConnection.Close();
+            }
+            
         }
     }
     }

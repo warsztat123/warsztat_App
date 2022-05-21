@@ -127,6 +127,7 @@
             this.button2.TabIndex = 47;
             this.button2.Text = "Modyfikuj";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.modyfikuj_Click);
             // 
             // dodaj
             // 
@@ -151,6 +152,7 @@
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(805, 725);
             this.dataGridView1.TabIndex = 45;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // comboBox1
             // 
