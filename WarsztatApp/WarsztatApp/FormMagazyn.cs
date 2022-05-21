@@ -22,6 +22,7 @@ namespace WarsztatApp
         SqlDataReader sqlDReader;
         List<string> str1 = new List<string>();
         private string s = "";
+        private int index;
         public FormMagazyn()
         {
             InitializeComponent();
@@ -148,14 +149,38 @@ namespace WarsztatApp
             DataTable dtb1 = new DataTable();
             sqlDAdapter.Fill(dtb1);
             dataGridView1.DataSource = dtb1;
-
-
         }
-        private void wyswietl_Click(object sender, EventArgs e)
+
+        private void Usun_Click(object sender, EventArgs e)
         {
-            
+            int id = (int)dataGridView1.CurrentRow.Cells[0].Value;
+            try
+            {
+                sqlConnection.Open();
+                string Query = "delete from CzescSamochodowa where CzescSamochodowa_ID=@ID;";
+                sqlCommand = new SqlCommand(Query, sqlConnection);
+                sqlCommand.Parameters.Add("@ID", SqlDbType.Int);
+                sqlCommand.Parameters["@ID"].Value = id.ToString();
+                sqlCommand.ExecuteNonQuery();
+                index = dataGridView1.CurrentCell.RowIndex;
+                dataGridView1.Rows.RemoveAt(index);
+            }
+            catch
+            {
+                MessageBox.Show("Błąd", "Bląd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                sqlConnection.Close();
+                txtNazwa.Text = "";
+                txtCena.Text = "";
+                txtIlosc.Text = "";
+                
+            }
+
         }
+    }
     }
 
    
-}
+

@@ -29,14 +29,9 @@
         private void InitializeComponent()
         {
             this.Kategoria = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
             this.txtIlosc = new System.Windows.Forms.TextBox();
             this.txtCena = new System.Windows.Forms.TextBox();
             this.txtNazwa = new System.Windows.Forms.TextBox();
@@ -57,26 +52,6 @@
             this.Kategoria.Size = new System.Drawing.Size(96, 25);
             this.Kategoria.TabIndex = 61;
             this.Kategoria.Text = "Kategoria";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label5.Location = new System.Drawing.Point(12, 237);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(64, 25);
-            this.label5.TabIndex = 60;
-            this.label5.Text = "label5";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label4.Location = new System.Drawing.Point(12, 184);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(64, 25);
-            this.label4.TabIndex = 59;
-            this.label4.Text = "label4";
             // 
             // label3
             // 
@@ -107,30 +82,6 @@
             this.label1.Size = new System.Drawing.Size(72, 25);
             this.label1.TabIndex = 56;
             this.label1.Text = "Nazwa";
-            // 
-            // textBox6
-            // 
-            this.textBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.textBox6.Location = new System.Drawing.Point(151, 287);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(212, 30);
-            this.textBox6.TabIndex = 54;
-            // 
-            // textBox5
-            // 
-            this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.textBox5.Location = new System.Drawing.Point(151, 234);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(212, 30);
-            this.textBox5.TabIndex = 53;
-            // 
-            // textBox4
-            // 
-            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.textBox4.Location = new System.Drawing.Point(151, 181);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(212, 30);
-            this.textBox4.TabIndex = 52;
             // 
             // txtIlosc
             // 
@@ -165,6 +116,7 @@
             this.button1.TabIndex = 48;
             this.button1.Text = "Usuń";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.Usun_Click);
             // 
             // button2
             // 
@@ -216,14 +168,9 @@
             this.ClientSize = new System.Drawing.Size(1200, 750);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.Kategoria);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox6);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox4);
             this.Controls.Add(this.txtIlosc);
             this.Controls.Add(this.txtCena);
             this.Controls.Add(this.txtNazwa);
@@ -245,14 +192,9 @@
         #endregion
 
         private System.Windows.Forms.Label Kategoria;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.TextBox txtIlosc;
         private System.Windows.Forms.TextBox txtCena;
         private System.Windows.Forms.TextBox txtNazwa;
