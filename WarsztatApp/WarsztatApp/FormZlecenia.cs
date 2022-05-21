@@ -37,7 +37,6 @@ namespace WarsztatApp
             buttonDodajCzesci.Enabled = false;
             pobierzListeStatusow();
             pobierzListeZlecen();
-            
         }
 
         //zdarzenie wyswietljące liste zleceń według ustalonej ramy dat

@@ -94,9 +94,9 @@
             // buttonDodaj
             // 
             this.buttonDodaj.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonDodaj.Location = new System.Drawing.Point(27, 594);
+            this.buttonDodaj.Location = new System.Drawing.Point(27, 583);
             this.buttonDodaj.Name = "buttonDodaj";
-            this.buttonDodaj.Size = new System.Drawing.Size(143, 29);
+            this.buttonDodaj.Size = new System.Drawing.Size(105, 29);
             this.buttonDodaj.TabIndex = 1;
             this.buttonDodaj.Text = "Dodaj";
             this.buttonDodaj.UseVisualStyleBackColor = true;
@@ -105,9 +105,9 @@
             // buttonModyf
             // 
             this.buttonModyf.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonModyf.Location = new System.Drawing.Point(27, 629);
+            this.buttonModyf.Location = new System.Drawing.Point(138, 583);
             this.buttonModyf.Name = "buttonModyf";
-            this.buttonModyf.Size = new System.Drawing.Size(143, 29);
+            this.buttonModyf.Size = new System.Drawing.Size(111, 29);
             this.buttonModyf.TabIndex = 2;
             this.buttonModyf.Text = "Modyfikuj";
             this.buttonModyf.UseVisualStyleBackColor = true;
@@ -116,9 +116,9 @@
             // buttonUsun
             // 
             this.buttonUsun.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonUsun.Location = new System.Drawing.Point(220, 594);
+            this.buttonUsun.Location = new System.Drawing.Point(255, 583);
             this.buttonUsun.Name = "buttonUsun";
-            this.buttonUsun.Size = new System.Drawing.Size(143, 29);
+            this.buttonUsun.Size = new System.Drawing.Size(108, 29);
             this.buttonUsun.TabIndex = 3;
             this.buttonUsun.Text = "Usuń";
             this.buttonUsun.UseVisualStyleBackColor = true;
@@ -175,7 +175,7 @@
             // buttonWyswietl
             // 
             this.buttonWyswietl.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonWyswietl.Location = new System.Drawing.Point(22, 65);
+            this.buttonWyswietl.Location = new System.Drawing.Point(31, 49);
             this.buttonWyswietl.Name = "buttonWyswietl";
             this.buttonWyswietl.Size = new System.Drawing.Size(298, 29);
             this.buttonWyswietl.TabIndex = 21;
@@ -439,7 +439,7 @@
             this.dateTimePickerOd.CustomFormat = "yyyy.MM.dd";
             this.dateTimePickerOd.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePickerOd.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.dateTimePickerOd.Location = new System.Drawing.Point(42, 31);
+            this.dateTimePickerOd.Location = new System.Drawing.Point(63, 21);
             this.dateTimePickerOd.Name = "dateTimePickerOd";
             this.dateTimePickerOd.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.dateTimePickerOd.Size = new System.Drawing.Size(111, 22);
@@ -451,12 +451,12 @@
             this.dateTimePickerDo.CustomFormat = "yyyy.MM.dd";
             this.dateTimePickerDo.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePickerDo.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.dateTimePickerDo.Location = new System.Drawing.Point(193, 31);
+            this.dateTimePickerDo.Location = new System.Drawing.Point(214, 21);
             this.dateTimePickerDo.Name = "dateTimePickerDo";
             this.dateTimePickerDo.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.dateTimePickerDo.Size = new System.Drawing.Size(111, 22);
             this.dateTimePickerDo.TabIndex = 48;
-            this.dateTimePickerDo.Value = new System.DateTime(2022, 5, 20, 12, 25, 39, 0);
+            this.dateTimePickerDo.Value = new System.DateTime(2022, 5, 21, 0, 0, 0, 0);
             // 
             // groupBox3
             // 
@@ -466,9 +466,9 @@
             this.groupBox3.Controls.Add(this.dateTimePickerDo);
             this.groupBox3.Controls.Add(this.dateTimePickerOd);
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold);
-            this.groupBox3.Location = new System.Drawing.Point(17, 672);
+            this.groupBox3.Location = new System.Drawing.Point(17, 653);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(360, 100);
+            this.groupBox3.Size = new System.Drawing.Size(360, 91);
             this.groupBox3.TabIndex = 49;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Wyszukaj wzgledem daty";
@@ -476,7 +476,7 @@
             // labelDoDaty
             // 
             this.labelDoDaty.AutoSize = true;
-            this.labelDoDaty.Location = new System.Drawing.Point(159, 36);
+            this.labelDoDaty.Location = new System.Drawing.Point(180, 26);
             this.labelDoDaty.Name = "labelDoDaty";
             this.labelDoDaty.Size = new System.Drawing.Size(28, 17);
             this.labelDoDaty.TabIndex = 50;
@@ -485,7 +485,7 @@
             // labelOdDaty
             // 
             this.labelOdDaty.AutoSize = true;
-            this.labelOdDaty.Location = new System.Drawing.Point(7, 36);
+            this.labelOdDaty.Location = new System.Drawing.Point(28, 26);
             this.labelOdDaty.Name = "labelOdDaty";
             this.labelOdDaty.Size = new System.Drawing.Size(29, 17);
             this.labelOdDaty.TabIndex = 49;
@@ -494,9 +494,9 @@
             // buttonDodajCzesci
             // 
             this.buttonDodajCzesci.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonDodajCzesci.Location = new System.Drawing.Point(179, 629);
+            this.buttonDodajCzesci.Location = new System.Drawing.Point(27, 618);
             this.buttonDodajCzesci.Name = "buttonDodajCzesci";
-            this.buttonDodajCzesci.Size = new System.Drawing.Size(184, 29);
+            this.buttonDodajCzesci.Size = new System.Drawing.Size(336, 29);
             this.buttonDodajCzesci.TabIndex = 50;
             this.buttonDodajCzesci.Text = "Dodaj Części";
             this.buttonDodajCzesci.UseVisualStyleBackColor = true;
