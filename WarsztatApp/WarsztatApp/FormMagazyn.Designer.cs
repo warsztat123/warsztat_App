@@ -34,7 +34,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.wyswietl = new System.Windows.Forms.Button();
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
@@ -108,17 +107,6 @@
             this.label1.Size = new System.Drawing.Size(72, 25);
             this.label1.TabIndex = 56;
             this.label1.Text = "Nazwa";
-            // 
-            // wyswietl
-            // 
-            this.wyswietl.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.wyswietl.Location = new System.Drawing.Point(12, 484);
-            this.wyswietl.Name = "wyswietl";
-            this.wyswietl.Size = new System.Drawing.Size(351, 59);
-            this.wyswietl.TabIndex = 55;
-            this.wyswietl.Text = "Wyświetl";
-            this.wyswietl.UseVisualStyleBackColor = true;
-            this.wyswietl.Click += new System.EventHandler(this.wyswietl_Click);
             // 
             // textBox6
             // 
@@ -233,7 +221,6 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.wyswietl);
             this.Controls.Add(this.textBox6);
             this.Controls.Add(this.textBox5);
             this.Controls.Add(this.textBox4);
@@ -263,7 +250,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button wyswietl;
         private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.TextBox textBox4;

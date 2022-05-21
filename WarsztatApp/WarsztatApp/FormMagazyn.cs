@@ -26,6 +26,7 @@ namespace WarsztatApp
         {
             InitializeComponent();
             pobierzListeKategorii();
+            wyswietlDane();
         }
 
         private void dodaj_Click(object sender, EventArgs e)
@@ -121,6 +122,35 @@ namespace WarsztatApp
             
         }
 
+        private void wyswietlDane()
+        {
+            try
+            {
+                sqlConnection.Open();
+                wyswietlDaneKlientow();
+            }
+            catch
+            {
+                MessageBox.Show("Błąd", "Bląd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                sqlConnection.Close();
+            }
+        }
+
+        private void wyswietlDaneKlientow()
+        {
+
+
+            string Query = "SELECT * from CzescSamochodowa;";
+            sqlDAdapter = new SqlDataAdapter(Query, sqlConnection);
+            DataTable dtb1 = new DataTable();
+            sqlDAdapter.Fill(dtb1);
+            dataGridView1.DataSource = dtb1;
+
+
+        }
         private void wyswietl_Click(object sender, EventArgs e)
         {
             
