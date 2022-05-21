@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SqlClient;
+
 
 namespace WarsztatApp
 {
@@ -16,7 +16,7 @@ namespace WarsztatApp
     {
 
 
-        static string ConnectionString = "Data Source=WINDOWS-D2AGQGT\\SQLEXPRESS;"
+        static string ConnectionString = "Data Source=LAPTOP-442E11CB\\SQLEXPRESS;"
                                                  + "Initial Catalog=Warsztat;"
                                                  + "Integrated Security=True";
         SqlConnection sqlConnection = new SqlConnection(ConnectionString);

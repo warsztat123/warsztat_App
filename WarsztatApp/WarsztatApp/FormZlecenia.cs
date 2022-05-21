@@ -29,7 +29,7 @@ namespace WarsztatApp
         public FormZlecenia()
         {
             InitializeComponent();
-            sqlConnection.ConnectionString = "Data Source=WINDOWS-D2AGQGT\\SQLEXPRESS;"
+            sqlConnection.ConnectionString = "Data Source=LAPTOP-442E11CB\\SQLEXPRESS;"
                                                 + "Initial Catalog=Warsztat;"
                                                 + "Integrated Security = true;";
             buttonModyf.Enabled = false;
