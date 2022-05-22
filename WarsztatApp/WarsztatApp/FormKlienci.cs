@@ -16,7 +16,7 @@ namespace WarsztatApp
     {
 
 
-        static string ConnectionString = "Data Source=LAPTOP-442E11CB\\SQLEXPRESS;"
+        static string ConnectionString = "Data Source=LAPTOP-WINDOWS-D2AGQGT\\SQLEXPRESS;"
                                                  + "Initial Catalog=Warsztat;"
                                                  + "Integrated Security=True";
         SqlConnection sqlConnection = new SqlConnection(ConnectionString);

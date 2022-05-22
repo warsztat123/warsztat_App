@@ -13,7 +13,7 @@ namespace WarsztatApp
 {
     public partial class FormMagazyn : Form
     {
-        static string ConnectionString = "Data Source=LAPTOP-442E11CB\\SQLEXPRESS;"
+        static string ConnectionString = "Data Source=WINDOWS-D2AGQGT\\SQLEXPRESS;"
                                                  + "Initial Catalog=Warsztat;"
                                                  + "Integrated Security=True";
         SqlConnection sqlConnection = new SqlConnection(ConnectionString);
