@@ -35,9 +35,9 @@
             this.txtIlosc = new System.Windows.Forms.TextBox();
             this.txtCena = new System.Windows.Forms.TextBox();
             this.txtNazwa = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.dodaj = new System.Windows.Forms.Button();
+            this.przyciskUsun = new System.Windows.Forms.Button();
+            this.przyciskModyfikuj = new System.Windows.Forms.Button();
+            this.przyciskDodaj = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -107,38 +107,38 @@
             this.txtNazwa.Size = new System.Drawing.Size(212, 30);
             this.txtNazwa.TabIndex = 49;
             // 
-            // button1
+            // przyciskUsun
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button1.Location = new System.Drawing.Point(12, 549);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(351, 59);
-            this.button1.TabIndex = 48;
-            this.button1.Text = "Usuń";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.Usun_Click);
+            this.przyciskUsun.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.przyciskUsun.Location = new System.Drawing.Point(12, 549);
+            this.przyciskUsun.Name = "przyciskUsun";
+            this.przyciskUsun.Size = new System.Drawing.Size(351, 59);
+            this.przyciskUsun.TabIndex = 48;
+            this.przyciskUsun.Text = "Usuń";
+            this.przyciskUsun.UseVisualStyleBackColor = true;
+            this.przyciskUsun.Click += new System.EventHandler(this.Usun_Click);
             // 
-            // button2
+            // przyciskModyfikuj
             // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button2.Location = new System.Drawing.Point(12, 614);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(351, 59);
-            this.button2.TabIndex = 47;
-            this.button2.Text = "Modyfikuj";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.modyfikuj_Click);
+            this.przyciskModyfikuj.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.przyciskModyfikuj.Location = new System.Drawing.Point(12, 614);
+            this.przyciskModyfikuj.Name = "przyciskModyfikuj";
+            this.przyciskModyfikuj.Size = new System.Drawing.Size(351, 59);
+            this.przyciskModyfikuj.TabIndex = 47;
+            this.przyciskModyfikuj.Text = "Modyfikuj";
+            this.przyciskModyfikuj.UseVisualStyleBackColor = true;
+            this.przyciskModyfikuj.Click += new System.EventHandler(this.modyfikuj_Click);
             // 
-            // dodaj
+            // przyciskDodaj
             // 
-            this.dodaj.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.dodaj.Location = new System.Drawing.Point(12, 679);
-            this.dodaj.Name = "dodaj";
-            this.dodaj.Size = new System.Drawing.Size(351, 59);
-            this.dodaj.TabIndex = 46;
-            this.dodaj.Text = "Dodaj";
-            this.dodaj.UseVisualStyleBackColor = true;
-            this.dodaj.Click += new System.EventHandler(this.dodaj_Click);
+            this.przyciskDodaj.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.przyciskDodaj.Location = new System.Drawing.Point(12, 679);
+            this.przyciskDodaj.Name = "przyciskDodaj";
+            this.przyciskDodaj.Size = new System.Drawing.Size(351, 59);
+            this.przyciskDodaj.TabIndex = 46;
+            this.przyciskDodaj.Text = "Dodaj";
+            this.przyciskDodaj.UseVisualStyleBackColor = true;
+            this.przyciskDodaj.Click += new System.EventHandler(this.dodaj_Click);
             // 
             // dataGridView1
             // 
@@ -176,9 +176,9 @@
             this.Controls.Add(this.txtIlosc);
             this.Controls.Add(this.txtCena);
             this.Controls.Add(this.txtNazwa);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.dodaj);
+            this.Controls.Add(this.przyciskUsun);
+            this.Controls.Add(this.przyciskModyfikuj);
+            this.Controls.Add(this.przyciskDodaj);
             this.Controls.Add(this.dataGridView1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormMagazyn";
@@ -200,9 +200,9 @@
         private System.Windows.Forms.TextBox txtIlosc;
         private System.Windows.Forms.TextBox txtCena;
         private System.Windows.Forms.TextBox txtNazwa;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button dodaj;
+        private System.Windows.Forms.Button przyciskUsun;
+        private System.Windows.Forms.Button przyciskModyfikuj;
+        private System.Windows.Forms.Button przyciskDodaj;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.ComboBox comboBox1;
     }

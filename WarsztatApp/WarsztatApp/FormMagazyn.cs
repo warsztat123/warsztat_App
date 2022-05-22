@@ -28,47 +28,55 @@ namespace WarsztatApp
             InitializeComponent();
             pobierzListeKategorii();
             wyswietlDane();
-            button1.Enabled = false;
+            przyciskUsun.Enabled = false;
+            przyciskModyfikuj.Enabled = false;
+           
         }
 
         private void dodaj_Click(object sender, EventArgs e)
         {
-            
-            try
+            if (czyUzupelnionePola() == true)
             {
-                sqlConnection.Open();
+                try
+                {
+                    sqlConnection.Open();
 
-                string Query = "insert into CzescSamochodowa(Nazwa,Cena,Ilosc,Kategoria_ID) values(@nazwa,@cena,@ilosc,@kategoria_id);";
-                sqlCommand = new SqlCommand
-                    (Query, sqlConnection);
+                    string Query = "insert into CzescSamochodowa(Nazwa,Cena,Ilosc,Kategoria_ID) values(@nazwa,@cena,@ilosc,@kategoria_id);";
+                    sqlCommand = new SqlCommand
+                        (Query, sqlConnection);
 
-                sqlCommand.Parameters.Add("@nazwa", SqlDbType.NVarChar);
-                sqlCommand.Parameters.Add("@cena", SqlDbType.Decimal);
-                sqlCommand.Parameters.Add("@ilosc", SqlDbType.Int);
-                sqlCommand.Parameters.Add("@kategoria_id", SqlDbType.Int);
+                    sqlCommand.Parameters.Add("@nazwa", SqlDbType.NVarChar);
+                    sqlCommand.Parameters.Add("@cena", SqlDbType.Decimal);
+                    sqlCommand.Parameters.Add("@ilosc", SqlDbType.Int);
+                    sqlCommand.Parameters.Add("@kategoria_id", SqlDbType.Int);
 
-                sqlCommand.Parameters["@nazwa"].Value = txtNazwa.Text;
-                sqlCommand.Parameters["@cena"].Value = txtCena.Text;
-                sqlCommand.Parameters["@ilosc"].Value = txtIlosc.Text;
-                sqlCommand.Parameters["@kategoria_id"].Value = s;
+                    sqlCommand.Parameters["@nazwa"].Value = txtNazwa.Text;
+                    sqlCommand.Parameters["@cena"].Value = txtCena.Text;
+                    sqlCommand.Parameters["@ilosc"].Value = txtIlosc.Text;
+                    sqlCommand.Parameters["@kategoria_id"].Value = s;
 
-                sqlCommand.ExecuteNonQuery();
-                MessageBox.Show("część dodana pomyślnie");
-            }
-            catch
-            {
-                MessageBox.Show("Błędne dane", "Bląd", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                sqlConnection.Close();
-            }
-            
+                    sqlCommand.ExecuteNonQuery();
+                    Wyszukaj();
+                    MessageBox.Show("produkt dodany pomyślnie");
+                }
+                catch
+                {
+                    MessageBox.Show("Błędne dane", "Bląd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    sqlConnection.Close();
+                    Wyczysc();
+                    przyciskUsun.Enabled = false;
+                    przyciskModyfikuj.Enabled = false;
+                }
+            }else MessageBox.Show("Nie podano wszystkich danych", "Uwaga", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
         }
 
         private void pobierzListeKategorii()
         {
-            
+
             sqlConnection.Open();
             string Query = "SELECT * from KategoriaCzesci;";
             sqlCommand = new SqlCommand
@@ -90,11 +98,11 @@ namespace WarsztatApp
 
         private void comboBox1_SelectionChangeCommitted(object sender, EventArgs e)
         {
-           
-            
+
+
             try
             {
-                
+
                 sqlConnection.Open();
 
                 string Query = "SELECT ParentKategoriaCzesci_ID from KategoriaCzesci where Nazwa=@kategoria;";
@@ -104,7 +112,7 @@ namespace WarsztatApp
                 sqlCommand.Parameters.Add("@kategoria", SqlDbType.NVarChar);
                 sqlCommand.Parameters["@kategoria"].Value = comboBox1.GetItemText(comboBox1.SelectedItem);
                 sqlDReader = sqlCommand.ExecuteReader();
-                
+
                 while (sqlDReader.Read())
                 {
                     s = sqlDReader.GetValue(0).ToString();
@@ -118,11 +126,12 @@ namespace WarsztatApp
             }
             finally
             {
+                
                 sqlDReader.Close();
                 sqlConnection.Close();
             }
-            Wyszukaj();
-            
+            Wyszukaj2();
+
         }
 
         private void wyswietlDane()
@@ -174,10 +183,8 @@ namespace WarsztatApp
             finally
             {
                 sqlConnection.Close();
-                txtNazwa.Text = "";
-                txtCena.Text = "";
-                txtIlosc.Text = "";
-                
+                Wyczysc();
+
             }
 
         }
@@ -205,8 +212,8 @@ namespace WarsztatApp
 
 
                 sqlCommand.ExecuteNonQuery();
-                wyswietlDaneKlientow();
-                MessageBox.Show("klient edytowany pomyślnie");
+                Wyszukaj();
+                MessageBox.Show("produkt edytowany pomyślnie");
             }
             catch (SqlException)
             {
@@ -217,25 +224,46 @@ namespace WarsztatApp
             finally
             {
                 sqlConnection.Close();
-                button1.Enabled = false;
-                txtNazwa.Text = "";
-                txtCena.Text = "";
-                txtIlosc.Text = "";
-                
+                przyciskUsun.Enabled = false;
+                przyciskModyfikuj.Enabled = false;
+                Wyczysc();
+
             }
+        }
+
+        private void Wyczysc()
+        {
+            txtNazwa.Text = "";
+            txtCena.Text = "";
+            txtIlosc.Text = "";
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            button1.Enabled = true;
+            przyciskUsun.Enabled = true;
+            przyciskModyfikuj.Enabled = true;
             txtNazwa.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
             txtCena.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
             txtIlosc.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
-            
-           
+
+
         }
 
         private void Wyszukaj()
+        {
+
+            string Query = "SELECT * from CzescSamochodowa where Kategoria_ID=@Id;";
+
+            sqlDAdapter = new SqlDataAdapter(Query, sqlConnection);
+            sqlDAdapter.SelectCommand.Parameters.AddWithValue("@Id", s);
+
+            DataTable dtb1 = new DataTable();
+            sqlDAdapter.Fill(dtb1);
+            dataGridView1.DataSource = dtb1;
+
+        }
+
+        private void Wyszukaj2()
         {
             try
             {
@@ -244,7 +272,7 @@ namespace WarsztatApp
 
                 sqlDAdapter = new SqlDataAdapter(Query, sqlConnection);
                 sqlDAdapter.SelectCommand.Parameters.AddWithValue("@Id", s);
-                
+
                 DataTable dtb1 = new DataTable();
                 sqlDAdapter.Fill(dtb1);
                 dataGridView1.DataSource = dtb1;
@@ -256,11 +284,20 @@ namespace WarsztatApp
             finally
             {
                 sqlConnection.Close();
+
             }
-            
+        }
+
+        private bool czyUzupelnionePola()
+        {
+            if (txtNazwa.Text != "" &&
+            txtCena.Text != "" &&
+            txtIlosc.Text != "" &&
+            comboBox1.Text != "") return true;
+            else return false;
+
         }
     }
-    }
-
+}
    
 
