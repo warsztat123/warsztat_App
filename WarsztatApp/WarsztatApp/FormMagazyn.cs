@@ -240,10 +240,11 @@ namespace WarsztatApp
             try
             {
                 sqlConnection.Open();
-                string Query = "SELECT * from CzescSamochodowa where Kategoria_ID=2;";
-                //sqlCommand.Parameters.Add("@id", SqlDbType.Int);
-                //sqlCommand.Parameters["@id"].Value = 2;
+                string Query = "SELECT * from CzescSamochodowa where Kategoria_ID=@Id;";
+
                 sqlDAdapter = new SqlDataAdapter(Query, sqlConnection);
+                sqlDAdapter.SelectCommand.Parameters.AddWithValue("@Id", s);
+                
                 DataTable dtb1 = new DataTable();
                 sqlDAdapter.Fill(dtb1);
                 dataGridView1.DataSource = dtb1;
