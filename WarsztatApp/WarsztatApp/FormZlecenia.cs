@@ -111,8 +111,6 @@ namespace WarsztatApp
             }
             else
             {
-                sqlDReader.Close();
-                sqlConnection.Close();
                 MessageBox.Show("Nie podano wszystkich danych", "Uwaga", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             
