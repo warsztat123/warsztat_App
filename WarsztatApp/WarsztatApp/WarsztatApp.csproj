@@ -64,6 +64,12 @@
     <Compile Include="FormCepik.Designer.cs">
       <DependentUpon>FormCepik.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormDodaniaCzesciDoZlecenia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDodaniaCzesciDoZlecenia.Designer.cs">
+      <DependentUpon>FormDodaniaCzesciDoZlecenia.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormKlienci.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -97,6 +103,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormCepik.resx">
       <DependentUpon>FormCepik.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormDodaniaCzesciDoZlecenia.resx">
+      <DependentUpon>FormDodaniaCzesciDoZlecenia.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormKlienci.resx">
       <DependentUpon>FormKlienci.cs</DependentUpon>
