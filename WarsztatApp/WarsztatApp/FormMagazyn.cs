@@ -41,19 +41,20 @@ namespace WarsztatApp
                 {
                     sqlConnection.Open();
 
-                    string Query = "insert into CzescSamochodowa(Nazwa,Cena,Ilosc,Kategoria_ID) values(@nazwa,@cena,@ilosc,@kategoria_id);";
+                    string Query = "declare @katID INT = (select KategoriaCzesci_ID from KategoriaCzesci WHERE Nazwa = '"+comboBox1.SelectedItem.ToString()+"');" +
+                        " insert into CzescSamochodowa(Nazwa,Cena,Ilosc,Kategoria_ID) values(@nazwa,@cena,@ilosc,@katID);";
                     sqlCommand = new SqlCommand
                         (Query, sqlConnection);
 
                     sqlCommand.Parameters.Add("@nazwa", SqlDbType.NVarChar);
                     sqlCommand.Parameters.Add("@cena", SqlDbType.Decimal);
                     sqlCommand.Parameters.Add("@ilosc", SqlDbType.Int);
-                    sqlCommand.Parameters.Add("@kategoria_id", SqlDbType.Int);
+                    //sqlCommand.Parameters.Add("@kategoria_id", SqlDbType.Int);
 
                     sqlCommand.Parameters["@nazwa"].Value = txtNazwa.Text;
                     sqlCommand.Parameters["@cena"].Value = txtCena.Text;
                     sqlCommand.Parameters["@ilosc"].Value = txtIlosc.Text;
-                    sqlCommand.Parameters["@kategoria_id"].Value = s;
+                    //sqlCommand.Parameters["@kategoria_id"].Value = s;
 
                     sqlCommand.ExecuteNonQuery();
                     Wyszukaj();
@@ -67,6 +68,7 @@ namespace WarsztatApp
                 {
                     sqlConnection.Close();
                     Wyczysc();
+                    wyswietlDane();
                     przyciskUsun.Enabled = false;
                     przyciskModyfikuj.Enabled = false;
                 }
@@ -100,7 +102,7 @@ namespace WarsztatApp
         {
 
 
-            try
+            /*try
             {
 
                 sqlConnection.Open();
@@ -129,7 +131,7 @@ namespace WarsztatApp
                 
                 sqlDReader.Close();
                 sqlConnection.Close();
-            }
+            }*/
             Wyszukaj2();
 
         }
@@ -268,10 +270,11 @@ namespace WarsztatApp
             try
             {
                 sqlConnection.Open();
-                string Query = "SELECT * from CzescSamochodowa where Kategoria_ID=@Id;";
+                string Query = "declare @katID INT = (select KategoriaCzesci_ID from KategoriaCzesci WHERE Nazwa = '" + comboBox1.SelectedItem.ToString() + "');" +
+                    "SELECT * from CzescSamochodowa where Kategoria_ID=@katID;";
 
                 sqlDAdapter = new SqlDataAdapter(Query, sqlConnection);
-                sqlDAdapter.SelectCommand.Parameters.AddWithValue("@Id", s);
+                //sqlDAdapter.SelectCommand.Parameters.AddWithValue("@Id", s);
 
                 DataTable dtb1 = new DataTable();
                 sqlDAdapter.Fill(dtb1);
