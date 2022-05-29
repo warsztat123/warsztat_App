@@ -21,9 +21,10 @@ namespace WarsztatApp
         DataSet sqlDSet = new DataSet();
         SqlDataReader sqlDReader;
         //-----------------------------------------------
+        FormDodaniaCzesciDoZlecenia oknoDodawaniaCzesci;
 
         List<string> str1 = new List<string>();
-        int id_row;
+        public int id_row;
         DataGridViewRow row;
 
         public FormZlecenia()
@@ -336,7 +337,11 @@ namespace WarsztatApp
         //zdarzenie otwierające okno gdzie dodaje się z według wybranej kategorii części samochodowe do wybranego zlecenia
         private void buttonDodajCzesci_Click(object sender, EventArgs e)
         {
+            
+            oknoDodawaniaCzesci = new FormDodaniaCzesciDoZlecenia(this);
+            oknoDodawaniaCzesci.ShowDialog();
 
         }
+
     }
 }
