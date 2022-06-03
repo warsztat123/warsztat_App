@@ -216,5 +216,11 @@ namespace WarsztatApp
             f_cepik = false;
             f_menu = true;
         }
+
+        private void buttonWyloguj_Click(object sender, EventArgs e)
+        {
+            Application.Restart();
+            Environment.Exit(0);
+        }
     }
 }

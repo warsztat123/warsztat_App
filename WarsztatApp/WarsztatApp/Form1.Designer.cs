@@ -38,6 +38,7 @@
             this.Naglowek = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.LogoGlowne = new System.Windows.Forms.Label();
+            this.buttonWyloguj = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -46,6 +47,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel1.Controls.Add(this.buttonWyloguj);
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.button4);
             this.panel1.Controls.Add(this.button3);
@@ -166,6 +168,20 @@
             this.LogoGlowne.TabIndex = 1;
             this.LogoGlowne.Text = "Warsztat";
             // 
+            // buttonWyloguj
+            // 
+            this.buttonWyloguj.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.buttonWyloguj.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.buttonWyloguj.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonWyloguj.Font = new System.Drawing.Font("SansSerif", 19.8F, System.Drawing.FontStyle.Bold);
+            this.buttonWyloguj.Location = new System.Drawing.Point(0, 977);
+            this.buttonWyloguj.Name = "buttonWyloguj";
+            this.buttonWyloguj.Size = new System.Drawing.Size(342, 56);
+            this.buttonWyloguj.TabIndex = 5;
+            this.buttonWyloguj.Text = "Wyloguj";
+            this.buttonWyloguj.UseVisualStyleBackColor = false;
+            this.buttonWyloguj.Click += new System.EventHandler(this.buttonWyloguj_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -204,6 +220,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label LogoGlowne;
         private System.Windows.Forms.Label Naglowek;
+        private System.Windows.Forms.Button buttonWyloguj;
     }
 }
 
