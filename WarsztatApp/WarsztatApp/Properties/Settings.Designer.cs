@@ -33,5 +33,16 @@ namespace WarsztatApp.Properties {
                 return ((string)(this["WarsztatConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=WINDOWS-D2AGQGT\\SQLEXPRESS;Initial Catalog=Warsztat;Integrated Securi" +
+            "ty=True")]
+        public string WarsztatConnectionString1 {
+            get {
+                return ((string)(this["WarsztatConnectionString1"]));
+            }
+        }
     }
 }

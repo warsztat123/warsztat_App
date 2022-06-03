@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="WarsztatDataSet1" targetNamespace="http://tempuri.org/WarsztatDataSet1.xsd" xmlns:mstns="http://tempuri.org/WarsztatDataSet1.xsd" xmlns="http://tempuri.org/WarsztatDataSet1.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="WarsztatConnectionString1" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="WarsztatConnectionString1 (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.WarsztatApp.Properties.Settings.GlobalReference.Default.WarsztatConnectionString1" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="v_PobierzListeZlecenTableAdapter" GeneratorDataComponentClassName="v_PobierzListeZlecenTableAdapter" Name="v_PobierzListeZlecen" UserDataComponentName="v_PobierzListeZlecenTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="WarsztatConnectionString1 (Settings)" DbObjectName="Warsztat.dbo.v_PobierzListeZlecen" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT Zlecenie_ID, Imie, Nazwisko, Telefon, Marka, Model, Rocznik, Kolor, Silnik, [Koszt Zlecenia], DataZlecenia, Status FROM dbo.v_PobierzListeZlecen</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Zlecenie_ID" DataSetColumn="Zlecenie_ID" />
+              <Mapping SourceColumn="Imie" DataSetColumn="Imie" />
+              <Mapping SourceColumn="Nazwisko" DataSetColumn="Nazwisko" />
+              <Mapping SourceColumn="Telefon" DataSetColumn="Telefon" />
+              <Mapping SourceColumn="Marka" DataSetColumn="Marka" />
+              <Mapping SourceColumn="Model" DataSetColumn="Model" />
+              <Mapping SourceColumn="Rocznik" DataSetColumn="Rocznik" />
+              <Mapping SourceColumn="Kolor" DataSetColumn="Kolor" />
+              <Mapping SourceColumn="Silnik" DataSetColumn="Silnik" />
+              <Mapping SourceColumn="Koszt Zlecenia" DataSetColumn="Koszt Zlecenia" />
+              <Mapping SourceColumn="DataZlecenia" DataSetColumn="DataZlecenia" />
+              <Mapping SourceColumn="Status" DataSetColumn="Status" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="WarsztatDataSet1" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="WarsztatDataSet1" msprop:Generator_UserDSName="WarsztatDataSet1">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="v_PobierzListeZlecen" msprop:Generator_TableClassName="v_PobierzListeZlecenDataTable" msprop:Generator_TableVarName="tablev_PobierzListeZlecen" msprop:Generator_TablePropName="v_PobierzListeZlecen" msprop:Generator_RowDeletingName="v_PobierzListeZlecenRowDeleting" msprop:Generator_RowChangingName="v_PobierzListeZlecenRowChanging" msprop:Generator_RowEvHandlerName="v_PobierzListeZlecenRowChangeEventHandler" msprop:Generator_RowDeletedName="v_PobierzListeZlecenRowDeleted" msprop:Generator_UserTableName="v_PobierzListeZlecen" msprop:Generator_RowChangedName="v_PobierzListeZlecenRowChanged" msprop:Generator_RowEvArgName="v_PobierzListeZlecenRowChangeEvent" msprop:Generator_RowClassName="v_PobierzListeZlecenRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Zlecenie_ID" msprop:Generator_ColumnVarNameInTable="columnZlecenie_ID" msprop:Generator_ColumnPropNameInRow="Zlecenie_ID" msprop:Generator_ColumnPropNameInTable="Zlecenie_IDColumn" msprop:Generator_UserColumnName="Zlecenie_ID" type="xs:int" />
+              <xs:element name="Imie" msprop:Generator_ColumnVarNameInTable="columnImie" msprop:Generator_ColumnPropNameInRow="Imie" msprop:Generator_ColumnPropNameInTable="ImieColumn" msprop:Generator_UserColumnName="Imie">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Nazwisko" msprop:Generator_ColumnVarNameInTable="columnNazwisko" msprop:Generator_ColumnPropNameInRow="Nazwisko" msprop:Generator_ColumnPropNameInTable="NazwiskoColumn" msprop:Generator_UserColumnName="Nazwisko">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Telefon" msprop:Generator_ColumnVarNameInTable="columnTelefon" msprop:Generator_ColumnPropNameInRow="Telefon" msprop:Generator_ColumnPropNameInTable="TelefonColumn" msprop:Generator_UserColumnName="Telefon">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="15" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Marka" msprop:Generator_ColumnVarNameInTable="columnMarka" msprop:Generator_ColumnPropNameInRow="Marka" msprop:Generator_ColumnPropNameInTable="MarkaColumn" msprop:Generator_UserColumnName="Marka">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Model" msprop:Generator_ColumnVarNameInTable="columnModel" msprop:Generator_ColumnPropNameInRow="Model" msprop:Generator_ColumnPropNameInTable="ModelColumn" msprop:Generator_UserColumnName="Model">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Rocznik" msprop:Generator_ColumnVarNameInTable="columnRocznik" msprop:Generator_ColumnPropNameInRow="Rocznik" msprop:Generator_ColumnPropNameInTable="RocznikColumn" msprop:Generator_UserColumnName="Rocznik" type="xs:int" />
+              <xs:element name="Kolor" msprop:Generator_ColumnVarNameInTable="columnKolor" msprop:Generator_ColumnPropNameInRow="Kolor" msprop:Generator_ColumnPropNameInTable="KolorColumn" msprop:Generator_UserColumnName="Kolor">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Silnik" msprop:Generator_ColumnVarNameInTable="columnSilnik" msprop:Generator_ColumnPropNameInRow="Silnik" msprop:Generator_ColumnPropNameInTable="SilnikColumn" msprop:Generator_UserColumnName="Silnik">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Koszt_x0020_Zlecenia" msprop:Generator_ColumnVarNameInTable="columnKoszt_Zlecenia" msprop:Generator_ColumnPropNameInRow="Koszt_Zlecenia" msprop:Generator_ColumnPropNameInTable="Koszt_ZleceniaColumn" msprop:Generator_UserColumnName="Koszt Zlecenia" type="xs:decimal" minOccurs="0" />
+              <xs:element name="DataZlecenia" msprop:Generator_ColumnVarNameInTable="columnDataZlecenia" msprop:Generator_ColumnPropNameInRow="DataZlecenia" msprop:Generator_ColumnPropNameInTable="DataZleceniaColumn" msprop:Generator_UserColumnName="DataZlecenia" type="xs:dateTime" />
+              <xs:element name="Status" msprop:Generator_ColumnVarNameInTable="columnStatus" msprop:Generator_ColumnPropNameInRow="Status" msprop:Generator_ColumnPropNameInTable="StatusColumn" msprop:Generator_UserColumnName="Status">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:v_PobierzListeZlecen" />
+      <xs:field xpath="mstns:Zlecenie_ID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

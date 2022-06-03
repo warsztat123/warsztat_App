@@ -69,10 +69,12 @@
             this.labelDoDaty = new System.Windows.Forms.Label();
             this.labelOdDaty = new System.Windows.Forms.Label();
             this.buttonDodajCzesci = new System.Windows.Forms.Button();
+            this.warsztatDataSet1 = new WarsztatApp.WarsztatDataSet1();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.warsztatDataSet1)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -502,6 +504,11 @@
             this.buttonDodajCzesci.UseVisualStyleBackColor = true;
             this.buttonDodajCzesci.Click += new System.EventHandler(this.buttonDodajCzesci_Click);
             // 
+            // warsztatDataSet1
+            // 
+            this.warsztatDataSet1.DataSetName = "WarsztatDataSet1";
+            this.warsztatDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // FormZlecenia
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -530,6 +537,7 @@
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.warsztatDataSet1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -578,5 +586,6 @@
         private System.Windows.Forms.Label labelDoDaty;
         private System.Windows.Forms.Label labelOdDaty;
         private System.Windows.Forms.Button buttonDodajCzesci;
+        private WarsztatDataSet1 warsztatDataSet1;
     }
 }

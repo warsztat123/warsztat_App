@@ -150,7 +150,7 @@ namespace WarsztatApp
         }
 
         //funckja pobierająca liste zleceń z bazy od najnoweszgo do najstarszego
-        private void pobierzListeZlecen()
+        public void pobierzListeZlecen()
         {
             sqlCommand.Connection = sqlConnection;
             DataTable sqlDTableTemp = new DataTable();
@@ -340,7 +340,6 @@ namespace WarsztatApp
             
             oknoDodawaniaCzesci = new FormDodaniaCzesciDoZlecenia(this);
             oknoDodawaniaCzesci.ShowDialog();
-
         }
 
     }
