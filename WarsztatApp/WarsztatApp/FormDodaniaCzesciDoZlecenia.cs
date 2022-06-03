@@ -23,6 +23,7 @@ namespace WarsztatApp
 
         List<string> str1 = new List<string>();
         public int id_row;
+        public int ilosc_do_zwrotu;
         DataGridViewRow row;
 
         int currentIdRowZlecenia;
@@ -43,33 +44,25 @@ namespace WarsztatApp
                                                 + "Integrated Security = true;";
             startTransakcji();
             pobierzListeKategorii();
-            
+
+            string sqlQuery3 = "SELECT Zlecenie_ID, CzescSamochodowa_ID, Ilosc, CenaZaSzt, CalkowityKoszt " +
+                               "FROM Zlecenie_CzescSamochodowa " +
+                               "WHERE Zlecenie_ID = @currIdRow";
+            SqlCommand sqlCommand3 = new SqlCommand(sqlQuery3, sqlConnection);
+            DataTable sqlDTableTemp3 = new DataTable();
+            sqlCommand3.Parameters.Add("@currIdRow", SqlDbType.Int);
+            sqlCommand3.Parameters["@currIdRow"].Value = currentIdRowZlecenia;
+            sqlDReader = sqlCommand3.ExecuteReader();
+            sqlDTableTemp3.Load(sqlDReader);
+            sqlDReader.Close();
+            dataGridView2.DataSource = sqlDTableTemp3;
+
         }
 
 
         private void comboBox1_SelectedValueChanged(object sender, EventArgs e)
         {
             wyszukajDostepneCzesciWedlugKategorii();
-        }
-
-
-        private void pobierzListeKategorii()
-        {
-            //sqlConnection.Open();
-            string Query = "SELECT * from KategoriaCzesci;";
-            sqlCommand = new SqlCommand(Query, sqlConnection);
-            sqlDReader = sqlCommand.ExecuteReader();
-            while (sqlDReader.Read())
-            {
-                str1.Add(sqlDReader.GetValue(2).ToString());
-            }
-            foreach (string p in str1)
-            {
-                comboBox1.Items.Add(p);
-            }
-            sqlDReader.Close();
-            //sqlConnection.Close();
-            str1.Clear();
         }
 
         private void buttonDodaj_Click(object sender, EventArgs e)
@@ -90,14 +83,19 @@ namespace WarsztatApp
                 sqlDReader.Close();
 
                 string sqlQuery3 = "SELECT Zlecenie_ID, CzescSamochodowa_ID, Ilosc, CenaZaSzt, CalkowityKoszt " +
-                                    "FROM Zlecenie_CzescSamochodowa";
+                                    "FROM Zlecenie_CzescSamochodowa " +
+                                    "WHERE Zlecenie_ID = @currIdRow";
                 SqlCommand sqlCommand3 = new SqlCommand(sqlQuery3, sqlConnection);
                 DataTable sqlDTableTemp3 = new DataTable();
+                sqlCommand3.Parameters.Add("@currIdRow", SqlDbType.Int);
+                sqlCommand3.Parameters["@currIdRow"].Value = currentIdRowZlecenia;
                 sqlDReader = sqlCommand3.ExecuteReader();
                 sqlDTableTemp3.Load(sqlDReader);
                 sqlDReader.Close();
                 dataGridView2.DataSource = sqlDTableTemp3;
 
+                buttonDodaj.Enabled = false;
+                czyWlaczycButtonZatwierdz();
                 wyszukajDostepneCzesciWedlugKategorii();
             }
             catch(Exception)
@@ -110,7 +108,49 @@ namespace WarsztatApp
 
         private void buttonUsun_Click(object sender, EventArgs e)
         {
+            string sqlQuery3 = "UPDATE CzescSamochodowa " +
+                                "SET Ilosc = Ilosc + @zwroconaIlosc " +
+                                "WHERE CzescSamochodowa_ID = @IDCzesci";
 
+            SqlCommand sqlCommand3 = new SqlCommand(sqlQuery3, sqlConnection);
+            DataTable sqlDTableTemp3 = new DataTable();
+            sqlCommand3.Parameters.Add("@IDCzesci", SqlDbType.Int);
+            sqlCommand3.Parameters.Add("@zwroconaIlosc", SqlDbType.Int);
+
+            sqlCommand3.Parameters["@IDCzesci"].Value = id_row;
+            sqlCommand3.Parameters["@zwroconaIlosc"].Value = ilosc_do_zwrotu;
+
+            sqlDReader = sqlCommand3.ExecuteReader();
+            sqlDTableTemp3.Load(sqlDReader);
+            sqlDReader.Close();
+            //wyszukajDostepneCzesciWedlugKategorii();
+
+            //--------------------------------------------------------------------------
+            string sqlQuery4 = "DELETE Zlecenie_CzescSamochodowa " +
+                                "WHERE CzescSamochodowa_ID = @IDCzesci";
+
+            SqlCommand sqlCommand4 = new SqlCommand(sqlQuery4, sqlConnection);
+            DataTable sqlDTableTemp4 = new DataTable();
+
+            sqlCommand4.Parameters.Add("@IDCzesci", SqlDbType.Int);
+            sqlCommand4.Parameters["@IDCzesci"].Value = id_row;
+
+            sqlDReader = sqlCommand4.ExecuteReader();
+            sqlDTableTemp4.Load(sqlDReader);
+            sqlDReader.Close();
+
+            //--------------------------------------------------------------------------
+            string sqlQuery5 = "SELECT Zlecenie_ID, CzescSamochodowa_ID, Ilosc, CenaZaSzt, CalkowityKoszt " +
+                                    "FROM Zlecenie_CzescSamochodowa";
+            SqlCommand sqlCommand5 = new SqlCommand(sqlQuery5, sqlConnection);
+            DataTable sqlDTableTemp5 = new DataTable();
+            sqlDReader = sqlCommand5.ExecuteReader();
+            sqlDTableTemp5.Load(sqlDReader);
+            sqlDReader.Close();
+            dataGridView2.DataSource = sqlDTableTemp5;
+
+            buttonUsun.Enabled = false;
+            czyWlaczycButtonZatwierdz();
         }
 
         private void buttonZatwierdz_Click(object sender, EventArgs e)
@@ -120,6 +160,22 @@ namespace WarsztatApp
             sqlDReader = sqlCommand.ExecuteReader();
             sqlDReader.Close();
             sqlConnection.Close();
+
+            sqlConnection.Open();
+            string QueryExec = "UPDATE Zlecenie " +
+                               "SET Koszt = " +
+                                            "(SELECT SUM(CalkowityKoszt) " +
+			                                "FROM Zlecenie_CzescSamochodowa " +
+                                            "GROUP BY Zlecenie_ID " +
+                                            "HAVING Zlecenie_ID = @currIdRow) " +
+                               "WHERE Zlecenie_ID = @currIdRow; ";
+            sqlCommand = new SqlCommand(QueryExec, sqlConnection);
+            sqlCommand.Parameters.Add("@currIdRow", SqlDbType.Int);
+            sqlCommand.Parameters["@currIdRow"].Value = currentIdRowZlecenia;
+            sqlDReader = sqlCommand.ExecuteReader();
+            sqlDReader.Close();
+            sqlConnection.Close();
+            oknoZlec.pobierzListeZlecen();
             Close();
         }
 
@@ -127,26 +183,16 @@ namespace WarsztatApp
         {
             string Query = "ROLLBACK TRAN;";
             sqlCommand = new SqlCommand(Query, sqlConnection);
-            sqlDReader = sqlCommand.ExecuteReader();
-            sqlDReader.Close();
+            SqlDataReader sqlDReader1;
+            sqlDReader1 = sqlCommand.ExecuteReader();
+            sqlDReader1.Close();
             sqlConnection.Close();
+            //dataGridView1.Refresh();
+            //dataGridView2.Refresh();
             Close();
         }
 
-        private void startTransakcji()
-        {
-            sqlConnection.Open();
-            string Query = "BEGIN TRAN;";
-            sqlCommand = new SqlCommand(Query, sqlConnection);
-            sqlDReader = sqlCommand.ExecuteReader();
-            sqlDReader.Close();
-        }
-
-        private void pobierzIdZlecenia()
-        {
-            currentIdRowZlecenia = oknoZlec.id_row;
-            //labelIlosc.Text = currentIdRowZlecenia.ToString();
-        }
+        
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -155,6 +201,7 @@ namespace WarsztatApp
                 if (e.RowIndex >= 0)
                 {
                     buttonDodaj.Enabled = true;
+                    buttonUsun.Enabled = false;
                     numericUpDownIlosc.Enabled = true;
                     row = this.dataGridView1.Rows[e.RowIndex];
                     id_row = (int)row.Cells["CzescSamochodowa_ID"].Value;
@@ -162,6 +209,7 @@ namespace WarsztatApp
                 else
                 {
                     buttonDodaj.Enabled = false;
+                    buttonUsun.Enabled = true;
                     numericUpDownIlosc.Enabled = false;
                 }
                 
@@ -190,6 +238,43 @@ namespace WarsztatApp
                 MessageBox.Show("Błednie zaznaczony wiersz", "Bląd", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+        private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (e.RowIndex >= 0)
+                {
+                    buttonDodaj.Enabled = false;
+                    buttonUsun.Enabled = true;
+                    numericUpDownIlosc.Enabled = false;
+                    row = this.dataGridView2.Rows[e.RowIndex];
+                    id_row = (int)row.Cells["CzescSamochodowa_ID"].Value;
+                }
+                else
+                {
+                    buttonDodaj.Enabled = true;
+                    buttonUsun.Enabled = false;
+                    numericUpDownIlosc.Enabled = true;
+                }
+
+                sqlCommand.CommandText = "SELECT Ilosc FROM Zlecenie_CzescSamochodowa WHERE CzescSamochodowa_ID = @id";
+                sqlCommand.Parameters.Add("@id", SqlDbType.Int);
+                sqlCommand.Parameters["@id"].Value = id_row;
+                sqlDReader = sqlCommand.ExecuteReader();
+                sqlDReader.Read();
+
+                ilosc_do_zwrotu = sqlDReader.GetInt32(0);
+
+                sqlCommand.Parameters.Clear();
+                sqlDReader.Close();
+            }
+            catch (Exception)
+            {
+                buttonDodaj.Enabled = true;
+                buttonUsun.Enabled = false;
+                MessageBox.Show("Błednie zaznaczony wiersz", "Bląd", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
 
         private void wyszukajDostepneCzesciWedlugKategorii()
         {
@@ -212,5 +297,44 @@ namespace WarsztatApp
             str1.Clear();
         }
 
+        private void czyWlaczycButtonZatwierdz()
+        {
+            if (dataGridView2.Rows.Count > 1 && dataGridView2.Rows != null)
+                buttonZatwierdz.Enabled = true;
+            else
+                buttonZatwierdz.Enabled = false;
+        }
+        private void startTransakcji()
+        {
+            sqlConnection.Open();
+            string Query = "BEGIN TRAN;";
+            sqlCommand = new SqlCommand(Query, sqlConnection);
+            sqlDReader = sqlCommand.ExecuteReader();
+            sqlDReader.Close();
+        }
+
+        private void pobierzIdZlecenia()
+        {
+            currentIdRowZlecenia = oknoZlec.id_row;
+            //labelIlosc.Text = currentIdRowZlecenia.ToString();
+        }
+        private void pobierzListeKategorii()
+        {
+            //sqlConnection.Open();
+            string Query = "SELECT * from KategoriaCzesci;";
+            sqlCommand = new SqlCommand(Query, sqlConnection);
+            sqlDReader = sqlCommand.ExecuteReader();
+            while (sqlDReader.Read())
+            {
+                str1.Add(sqlDReader.GetValue(2).ToString());
+            }
+            foreach (string p in str1)
+            {
+                comboBox1.Items.Add(p);
+            }
+            sqlDReader.Close();
+            //sqlConnection.Close();
+            str1.Clear();
+        }
     }
 }

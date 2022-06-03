@@ -90,6 +90,7 @@
             // buttonWycofaj
             // 
             this.buttonWycofaj.BackColor = System.Drawing.Color.Red;
+            this.buttonWycofaj.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.buttonWycofaj.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.buttonWycofaj.ForeColor = System.Drawing.Color.White;
             this.buttonWycofaj.Location = new System.Drawing.Point(8, 447);
@@ -202,6 +203,7 @@
             this.dataGridView2.RowTemplate.Height = 24;
             this.dataGridView2.Size = new System.Drawing.Size(400, 553);
             this.dataGridView2.TabIndex = 1;
+            this.dataGridView2.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellClick);
             // 
             // FormDodaniaCzesciDoZlecenia
             // 
@@ -239,9 +241,9 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.Button buttonUsun;
-        private System.Windows.Forms.Button buttonWycofaj;
-        private System.Windows.Forms.Button buttonZatwierdz;
         private System.Windows.Forms.Label labelKategoria;
         private System.Windows.Forms.ComboBox comboBox1;
+        public System.Windows.Forms.Button buttonWycofaj;
+        public System.Windows.Forms.Button buttonZatwierdz;
     }
 }
