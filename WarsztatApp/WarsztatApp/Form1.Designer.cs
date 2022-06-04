@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.buttonWyloguj = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -38,7 +39,7 @@
             this.Naglowek = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.LogoGlowne = new System.Windows.Forms.Label();
-            this.buttonWyloguj = new System.Windows.Forms.Button();
+            this.buttonPracownicy = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -47,6 +48,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel1.Controls.Add(this.buttonPracownicy);
             this.panel1.Controls.Add(this.buttonWyloguj);
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.button4);
@@ -58,6 +60,20 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(342, 1033);
             this.panel1.TabIndex = 0;
+            // 
+            // buttonWyloguj
+            // 
+            this.buttonWyloguj.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.buttonWyloguj.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.buttonWyloguj.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonWyloguj.Font = new System.Drawing.Font("SansSerif", 19.8F, System.Drawing.FontStyle.Bold);
+            this.buttonWyloguj.Location = new System.Drawing.Point(0, 977);
+            this.buttonWyloguj.Name = "buttonWyloguj";
+            this.buttonWyloguj.Size = new System.Drawing.Size(342, 56);
+            this.buttonWyloguj.TabIndex = 5;
+            this.buttonWyloguj.Text = "Wyloguj";
+            this.buttonWyloguj.UseVisualStyleBackColor = false;
+            this.buttonWyloguj.Click += new System.EventHandler(this.buttonWyloguj_Click);
             // 
             // button2
             // 
@@ -168,19 +184,18 @@
             this.LogoGlowne.TabIndex = 1;
             this.LogoGlowne.Text = "Warsztat";
             // 
-            // buttonWyloguj
+            // buttonPracownicy
             // 
-            this.buttonWyloguj.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.buttonWyloguj.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.buttonWyloguj.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonWyloguj.Font = new System.Drawing.Font("SansSerif", 19.8F, System.Drawing.FontStyle.Bold);
-            this.buttonWyloguj.Location = new System.Drawing.Point(0, 977);
-            this.buttonWyloguj.Name = "buttonWyloguj";
-            this.buttonWyloguj.Size = new System.Drawing.Size(342, 56);
-            this.buttonWyloguj.TabIndex = 5;
-            this.buttonWyloguj.Text = "Wyloguj";
-            this.buttonWyloguj.UseVisualStyleBackColor = false;
-            this.buttonWyloguj.Click += new System.EventHandler(this.buttonWyloguj_Click);
+            this.buttonPracownicy.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.buttonPracownicy.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonPracownicy.Font = new System.Drawing.Font("SansSerif", 19.8F, System.Drawing.FontStyle.Bold);
+            this.buttonPracownicy.Location = new System.Drawing.Point(3, 557);
+            this.buttonPracownicy.Name = "buttonPracownicy";
+            this.buttonPracownicy.Size = new System.Drawing.Size(334, 102);
+            this.buttonPracownicy.TabIndex = 6;
+            this.buttonPracownicy.Text = "Pracownicy";
+            this.buttonPracownicy.UseVisualStyleBackColor = false;
+            this.buttonPracownicy.Click += new System.EventHandler(this.buttonPracownicy_Click);
             // 
             // Form1
             // 
@@ -221,6 +236,7 @@
         private System.Windows.Forms.Label LogoGlowne;
         private System.Windows.Forms.Label Naglowek;
         private System.Windows.Forms.Button buttonWyloguj;
+        private System.Windows.Forms.Button buttonPracownicy;
     }
 }
 

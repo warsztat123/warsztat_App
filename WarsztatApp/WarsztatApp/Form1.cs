@@ -20,12 +20,14 @@ namespace WarsztatApp
         FormMagazyn oknoMagazyn;
         FormKlienci oknoKlienci;
         FormCepik oknoCepik;
+        FormPracownicy oknoPracownicy;
 
         bool f_menu = true;
         bool f_zlecenia = false;
         bool f_magazyn = false;
         bool f_klienci = false;
         bool f_cepik = false;
+        bool f_pracownicy = false;
         //-----------------------------------------------------------
 
         //-----------------------------------------------------------
@@ -100,9 +102,11 @@ namespace WarsztatApp
             button2.Enabled = true;
             button3.Enabled = true;
             button4.Enabled = true;
+            buttonPracownicy.Enabled = true;
             if (f_magazyn == true) oknoMagazyn.Close();
             if (f_klienci == true) oknoKlienci.Close();
             if (f_cepik == true) oknoCepik.Close();
+            if (f_pracownicy) oknoPracownicy.Close();
 
             oknoZlecenia = new FormZlecenia();
             oknoZlecenia.TopLevel = false;
@@ -126,9 +130,11 @@ namespace WarsztatApp
             button2.Enabled = false;
             button3.Enabled = true;
             button4.Enabled = true;
-            if(f_zlecenia==true) oknoZlecenia.Close();
+            buttonPracownicy.Enabled = true;
+            if (f_zlecenia==true) oknoZlecenia.Close();
             if (f_klienci == true) oknoKlienci.Close();
             if (f_cepik == true) oknoCepik.Close();
+            if (f_pracownicy) oknoPracownicy.Close();
 
             oknoMagazyn = new FormMagazyn();
             oknoMagazyn.TopLevel = false;
@@ -154,9 +160,11 @@ namespace WarsztatApp
             button2.Enabled = true;
             button3.Enabled = false;
             button4.Enabled = true;
+            buttonPracownicy.Enabled = true;
             if (f_zlecenia == true) oknoZlecenia.Close();
             if (f_magazyn == true) oknoMagazyn.Close();
             if (f_cepik == true) oknoCepik.Close();
+            if (f_pracownicy) oknoPracownicy.Close();
 
             oknoKlienci = new FormKlienci();
             oknoKlienci.TopLevel = false;
@@ -180,9 +188,11 @@ namespace WarsztatApp
             button2.Enabled = true;
             button3.Enabled = true;
             button4.Enabled = false;
+            buttonPracownicy.Enabled = true;
             if (f_zlecenia == true) oknoZlecenia.Close();
             if (f_klienci == true) oknoKlienci.Close();
             if (f_magazyn == true) oknoMagazyn.Close();
+            if (f_pracownicy) oknoPracownicy.Close();
 
             oknoCepik = new FormCepik();
             oknoCepik.TopLevel = false;
@@ -221,6 +231,32 @@ namespace WarsztatApp
         {
             Application.Restart();
             Environment.Exit(0);
+        }
+
+        private void buttonPracownicy_Click(object sender, EventArgs e)
+        {
+            Naglowek.Text = buttonPracownicy.Text;
+            LogoGlowne.Visible = false;
+            button1.Enabled = true;
+            button2.Enabled = true;
+            button3.Enabled = true;
+            buttonPracownicy.Enabled = false;
+            if (f_zlecenia) oknoZlecenia.Close();
+            if (f_klienci) oknoKlienci.Close();
+            if (f_magazyn) oknoMagazyn.Close();
+            if (f_pracownicy) oknoPracownicy.Close();
+
+            oknoPracownicy = new FormPracownicy();
+            oknoPracownicy.TopLevel = false;
+            panel3.Controls.Add(oknoPracownicy);
+            oknoPracownicy.BringToFront();
+            oknoPracownicy.Show();
+            f_menu = false;
+            f_zlecenia = false;
+            f_magazyn = false;
+            f_klienci = false;
+            f_cepik = false;
+            f_pracownicy = true;
         }
     }
 }
