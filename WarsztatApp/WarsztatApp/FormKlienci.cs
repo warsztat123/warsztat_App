@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using WarsztatApp.Data;
 
 namespace WarsztatApp
 {
@@ -59,14 +59,21 @@ namespace WarsztatApp
 
             try
             {
+                Klient nowyKlient = new Klient();
+                nowyKlient.Imie = txtImie.Text;
+                nowyKlient.Nazwisko = txtNazwisko.Text;
+                nowyKlient.Tel = txtTelefon.Text;
+                nowyKlient.Ulica = txtUlica.Text;
+                nowyKlient.nrUlicy = txtNumer.Text;
+                nowyKlient.Miasto = txtMiasto.Text;
+                nowyKlient.Wojew = txtWojewodztwo.Text;
+                nowyKlient.kodPocz = txtKodPocztowy.Text;
+
                 sqlConnection.Open();
 
                 string Query = "EXEC USP_WstawDaneKlienta @imie,@nazw,@tel,@ulica,@nrUlicy,@miasto,@wojew,@kodPocz";
 
-
-
-                sqlCommand = new SqlCommand
-                    (Query, sqlConnection);
+                sqlCommand = new SqlCommand(Query, sqlConnection);
 
                 sqlCommand.Parameters.Add("@imie", SqlDbType.NVarChar);
                 sqlCommand.Parameters.Add("@nazw", SqlDbType.NVarChar);
@@ -77,14 +84,14 @@ namespace WarsztatApp
                 sqlCommand.Parameters.Add("@wojew", SqlDbType.NVarChar);
                 sqlCommand.Parameters.Add("@kodPocz", SqlDbType.NVarChar);
 
-                sqlCommand.Parameters["@imie"].Value = txtImie.Text;
-                sqlCommand.Parameters["@nazw"].Value = txtNazwisko.Text;
-                sqlCommand.Parameters["@tel"].Value = txtTelefon.Text;
-                sqlCommand.Parameters["@ulica"].Value = txtUlica.Text;
-                sqlCommand.Parameters["@NrUlicy"].Value = txtNumer.Text;
-                sqlCommand.Parameters["@miasto"].Value = txtMiasto.Text;
-                sqlCommand.Parameters["@wojew"].Value = txtWojewodztwo.Text;
-                sqlCommand.Parameters["@kodPocz"].Value = txtKodPocztowy.Text;
+                sqlCommand.Parameters["@imie"].Value = nowyKlient.Imie;
+                sqlCommand.Parameters["@nazw"].Value = nowyKlient.Nazwisko;
+                sqlCommand.Parameters["@tel"].Value = nowyKlient.Tel;
+                sqlCommand.Parameters["@ulica"].Value = nowyKlient.Ulica;
+                sqlCommand.Parameters["@NrUlicy"].Value = nowyKlient.nrUlicy;
+                sqlCommand.Parameters["@miasto"].Value = nowyKlient.Miasto;
+                sqlCommand.Parameters["@wojew"].Value = nowyKlient.Wojew;
+                sqlCommand.Parameters["@kodPocz"].Value = nowyKlient.kodPocz;
 
                 sqlCommand.ExecuteNonQuery();
                 wyswietlDaneKlientow();

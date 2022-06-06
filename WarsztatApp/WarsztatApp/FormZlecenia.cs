@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WarsztatApp.Data;
 
 namespace WarsztatApp
 {
@@ -53,6 +54,16 @@ namespace WarsztatApp
             {
                 try
                 {
+                    Klient nowyKlient = new Klient();
+                    nowyKlient.Imie = textBoxImie.Text;
+                    nowyKlient.Nazwisko = textBoxNazw.Text;
+                    nowyKlient.Tel = textBoxTel.Text;
+                    nowyKlient.Ulica = textBoxUlica.Text;
+                    nowyKlient.nrUlicy = textBoxNrUlicy.Text;
+                    nowyKlient.Miasto = textBoxMiasto.Text;
+                    nowyKlient.Wojew = textBoxWojew.Text;
+                    nowyKlient.kodPocz = textBoxKodP.Text;
+
                     sqlCommand.Connection = sqlConnection;
                     DataTable sqlDTableTemp = new DataTable();
                     SqlCommand sqlCommandDaneZlecen = new SqlCommand();
@@ -76,14 +87,14 @@ namespace WarsztatApp
                     sqlCommandDaneZlecen.Parameters.Add("@silnik", SqlDbType.NVarChar);
                     sqlCommandDaneZlecen.Parameters.Add("@status", SqlDbType.NVarChar);
 
-                    sqlCommandDaneZlecen.Parameters["@imie"].Value = textBoxImie.Text;
-                    sqlCommandDaneZlecen.Parameters["@nazw"].Value = textBoxNazw.Text;
-                    sqlCommandDaneZlecen.Parameters["@tel"].Value = textBoxTel.Text;
-                    sqlCommandDaneZlecen.Parameters["@ulica"].Value = textBoxUlica.Text;
-                    sqlCommandDaneZlecen.Parameters["@nrUlicy"].Value = textBoxNrUlicy.Text;
-                    sqlCommandDaneZlecen.Parameters["@miasto"].Value = textBoxMiasto.Text;
-                    sqlCommandDaneZlecen.Parameters["@wojew"].Value = textBoxWojew.Text;
-                    sqlCommandDaneZlecen.Parameters["@kodPocz"].Value = textBoxKodP.Text;
+                    sqlCommandDaneZlecen.Parameters["@imie"].Value = nowyKlient.Imie;
+                    sqlCommandDaneZlecen.Parameters["@nazw"].Value = nowyKlient.Nazwisko;
+                    sqlCommandDaneZlecen.Parameters["@tel"].Value = nowyKlient.Tel;
+                    sqlCommandDaneZlecen.Parameters["@ulica"].Value = nowyKlient.Ulica;
+                    sqlCommandDaneZlecen.Parameters["@nrUlicy"].Value = nowyKlient.nrUlicy;
+                    sqlCommandDaneZlecen.Parameters["@miasto"].Value = nowyKlient.Miasto;
+                    sqlCommandDaneZlecen.Parameters["@wojew"].Value = nowyKlient.Wojew;
+                    sqlCommandDaneZlecen.Parameters["@kodPocz"].Value = nowyKlient.kodPocz;
                     sqlCommandDaneZlecen.Parameters["@marka"].Value = textBoxMarka.Text;
                     sqlCommandDaneZlecen.Parameters["@model"].Value = textBoxModel.Text;
                     sqlCommandDaneZlecen.Parameters["@rocznik"].Value = textBoxRocznik.Text;

@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WarsztatApp.Data;
 
 namespace WarsztatApp
 {
@@ -39,9 +40,15 @@ namespace WarsztatApp
             {
                 try
                 {
+                    CzescSamochodu nowaCzesc = new CzescSamochodu();
+                    nowaCzesc.Nazwa = txtNazwa.Text;
+                    nowaCzesc.Cena = txtCena.Text;
+                    nowaCzesc.Ilosc = txtIlosc.Text;
+                    nowaCzesc.Kategoria = comboBox1.SelectedItem.ToString();
+
                     sqlConnection.Open();
 
-                    string Query = "declare @katID INT = (select KategoriaCzesci_ID from KategoriaCzesci WHERE Nazwa = '"+comboBox1.SelectedItem.ToString()+"');" +
+                    string Query = "declare @katID INT = (select KategoriaCzesci_ID from KategoriaCzesci WHERE Nazwa = '"+nowaCzesc.Kategoria+"');" +
                         " insert into CzescSamochodowa(Nazwa,Cena,Ilosc,Kategoria_ID) values(@nazwa,@cena,@ilosc,@katID);";
                     sqlCommand = new SqlCommand
                         (Query, sqlConnection);
@@ -51,9 +58,9 @@ namespace WarsztatApp
                     sqlCommand.Parameters.Add("@ilosc", SqlDbType.Int);
                     //sqlCommand.Parameters.Add("@kategoria_id", SqlDbType.Int);
 
-                    sqlCommand.Parameters["@nazwa"].Value = txtNazwa.Text;
-                    sqlCommand.Parameters["@cena"].Value = txtCena.Text;
-                    sqlCommand.Parameters["@ilosc"].Value = txtIlosc.Text;
+                    sqlCommand.Parameters["@nazwa"].Value = nowaCzesc.Nazwa;
+                    sqlCommand.Parameters["@cena"].Value = nowaCzesc.Cena;
+                    sqlCommand.Parameters["@ilosc"].Value = nowaCzesc.Ilosc;
                     //sqlCommand.Parameters["@kategoria_id"].Value = s;
 
                     sqlCommand.ExecuteNonQuery();
